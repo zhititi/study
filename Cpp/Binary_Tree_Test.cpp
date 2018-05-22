@@ -9,7 +9,7 @@
 #include <map>
 #include <set>
 using namespace std;
-//Êý¾Ý½á¹¹£¬Ê÷¡£²»ÔÊÐíÓÃÈ«¾Ö±äÁ¿¡£·½·¨Ò»£ºÒýÓÃ+outputº¯Êý¡£·½·¨¶þ£ºsum1, sum2, sum·¨¡£·½·¨Èý£ºflag·¨£¬ÕÒµ½ÁËÖ±½Ó·µ»Ø¡£
+//æ•°æ®ç»“æž„ï¼Œæ ‘ã€‚ä¸å…è®¸ç”¨å…¨å±€å˜é‡ã€‚æ–¹æ³•ä¸€ï¼šå¼•ç”¨+outputå‡½æ•°ã€‚æ–¹æ³•äºŒï¼šsum1, sum2, sumæ³•ã€‚æ–¹æ³•ä¸‰ï¼šflagæ³•ï¼Œæ‰¾åˆ°äº†ç›´æŽ¥è¿”å›žã€‚
 //
 struct node {
 	int data;
@@ -31,7 +31,7 @@ node *create(int postl, int postr, int inl, int inr) {
 	return now;
 }
 
-int num_1 = 0;                   //È«¾Ö±äÁ¿°æ±¾£¨²»½¨ÒéÊ¹ÓÃ£©
+int num_1 = 0;                   //å…¨å±€å˜é‡ç‰ˆæœ¬ï¼ˆä¸å»ºè®®ä½¿ç”¨ï¼‰
 int countLeaves_1(node *root) {
 	if (root == NULL) return num_1;
 	if (root->lchild == NULL&&root->rchild == NULL) {
@@ -43,7 +43,7 @@ int countLeaves_1(node *root) {
 	return num_1;
 }
 
-int countLeaves_2(node *root, int &num) {      //ÒýÓÃ°æ±¾
+int countLeaves_2(node *root, int &num) {      //å¼•ç”¨ç‰ˆæœ¬
 	if (root == NULL) return num;
 	if (root->lchild == NULL&&root->rchild == NULL) {
 		num++;
@@ -54,12 +54,12 @@ int countLeaves_2(node *root, int &num) {      //ÒýÓÃ°æ±¾
 	return num;
 }
 
-int countLeaves_3(node *root) {  //½ö¸ù½áµã°æ±¾
+int countLeaves_3(node *root) {  //ä»…æ ¹ç»“ç‚¹ç‰ˆæœ¬
 	int num1, num2, num = 0;
 	if (root == NULL) return 0;
 	if (root->lchild == NULL&&root->rchild == NULL) {
 		num++;
-		return num;  //ÔÚÕâÀïÒªÓÐreturn num; »òÕßºóÃæÒªÓÐ+= num1 + num2(×Ô¼ºÏëÏëÎªÉ¶)
+		return num;  //åœ¨è¿™é‡Œè¦æœ‰return num; æˆ–è€…åŽé¢è¦æœ‰+= num1 + num2(è‡ªå·±æƒ³æƒ³ä¸ºå•¥)
 	}
 	num1 = countLeaves_3(root->lchild);
 	num2 = countLeaves_3(root->rchild);
@@ -67,7 +67,7 @@ int countLeaves_3(node *root) {  //½ö¸ù½áµã°æ±¾
 	return num;
 }
 
-int single(node *root) { //Êä³öÊ÷ÖÐµ¥×ÓËï½áµãµÄ¸öÊý
+int single(node *root) { //è¾“å‡ºæ ‘ä¸­å•å­å­™ç»“ç‚¹çš„ä¸ªæ•°
 	int num1, num2, num = 0;
 	if (root == NULL) return 0;
 	if ((root->rchild == NULL&&root->lchild != NULL) || (root->rchild != NULL&&root->lchild == NULL)) {
@@ -79,7 +79,7 @@ int single(node *root) { //Êä³öÊ÷ÖÐµ¥×ÓËï½áµãµÄ¸öÊý
 	return num;
 }
 
-int minNode(node *root, int &min) {//ÕÒµ½×îÐ¡Öµ
+int minNode(node *root, int &min) {//æ‰¾åˆ°æœ€å°å€¼
 	if (root == NULL) return 0;
 	if (root->data < min) min = root->data;
 	minNode(root->lchild, min);
@@ -92,9 +92,9 @@ int findMinNode(node *root) {
 	return ans;
 }
 
-void copy(node *root1, node *&root2) {  //¸´ÖÆÒ»¸ö¶þ²æÊ÷£¬¼ÇµÃÕâÀïÒª¼Ó &ÒýÓÃ·û
+void copy(node *root1, node *&root2) {  //å¤åˆ¶ä¸€ä¸ªäºŒå‰æ ‘ï¼Œè®°å¾—è¿™é‡Œè¦åŠ  &å¼•ç”¨ç¬¦
 	if (root1 == NULL) {
-		root2 = NULL;           //ÓÐÁËÕâ¾äºóÃæ¾Í²»ÓÃ¼Ó lchild, rchildÁË
+		root2 = NULL;           //æœ‰äº†è¿™å¥åŽé¢å°±ä¸ç”¨åŠ  lchild, rchildäº†
 		return;
 	}
 	root2 = new node;
@@ -105,7 +105,7 @@ void copy(node *root1, node *&root2) {  //¸´ÖÆÒ»¸ö¶þ²æÊ÷£¬¼ÇµÃÕâÀïÒª¼Ó &ÒýÓÃ·û
 	copy(root1->rchild, root2->rchild);
 }
 
-int numNode(node *root, int k, int h) {  //ÊýÊ÷ÔÚ¸ß¶ÈkÉÏ½áµã¸öÊý
+int numNode(node *root, int k, int h) {  //æ•°æ ‘åœ¨é«˜åº¦kä¸Šç»“ç‚¹ä¸ªæ•°
 	int num1, num2, num = 0;
 	if (root == NULL) return 0;
 	if (h == k) {
@@ -121,19 +121,19 @@ int disNumNode(node *root, int k) {
 	return temp;
 }
 
-bool isBro(node *root, int a, int b) { //ÅÐ¶ÏÖµÎªa, bµÄÁ½½áµãÊÇ·ñÎªÐÖµÜ
+bool isBro(node *root, int a, int b) { //åˆ¤æ–­å€¼ä¸ºa, bçš„ä¸¤ç»“ç‚¹æ˜¯å¦ä¸ºå…„å¼Ÿ
 	bool flag;
 	if (root == NULL || root->lchild == NULL || root->rchild == NULL) return false;
-	//ÒòÎªÓÃµ½ÁËlchildºÍrchildµÄdata£¬ËùÒÔÒªÈ·±£ÕâÁ½¸ö¶¼²»Îª¿Õ
+	//å› ä¸ºç”¨åˆ°äº†lchildå’Œrchildçš„dataï¼Œæ‰€ä»¥è¦ç¡®ä¿è¿™ä¸¤ä¸ªéƒ½ä¸ä¸ºç©º
 	if ((root->lchild->data == a&&root->rchild->data == b) || (root->lchild->data == b&&root->rchild->data == a)) {
 		return true;
 	}
 	flag = isBro(root->lchild, a, b);
-	if (flag == true) return true;   //Õâ¾äÆðµ½ÁËÄÜÕÒµ½ÁËÍ£Ö¹µÄ×÷ÓÃ
+	if (flag == true) return true;   //è¿™å¥èµ·åˆ°äº†èƒ½æ‰¾åˆ°äº†åœæ­¢çš„ä½œç”¨
 	else return isBro(root->rchild, a, b);
 }
 
-void printNode(node *root) {        //ÇóÖµÎªxµÄ½áµãµÄËùÓÐ×ÓËï½áµãµÄÏÈÐò±éÀú
+void printNode(node *root) {        //æ±‚å€¼ä¸ºxçš„ç»“ç‚¹çš„æ‰€æœ‰å­å­™ç»“ç‚¹çš„å…ˆåºéåŽ†
 	if (root == NULL)return;
 
 	printf("%d ", root->data);
@@ -153,39 +153,39 @@ bool sunPrint(node *root, int x) {
 	else return sunPrint(root->rchild, x);
 }
 
-void reverse(node *&root) {  //½«¶þ²æÊ÷µÄ×óÓÒ×ÓÊ÷½»»»
+void reverse(node *&root) {  //å°†äºŒå‰æ ‘çš„å·¦å³å­æ ‘äº¤æ¢
 	if (root == NULL) return;
 	reverse(root->lchild);
 	reverse(root->rchild);
 	swap(root->lchild, root->rchild);
 }
 
-void reverse_1(node *root, node *&root1) {  //½«¶þ²æÊ÷µÄ×óÓÒ×ÓÊ÷½»»»£¬ÒªÇó²»ÆÆ»µÔ­¶þ²æÊ÷
+void reverse_1(node *root, node *&root1) {  //å°†äºŒå‰æ ‘çš„å·¦å³å­æ ‘äº¤æ¢ï¼Œè¦æ±‚ä¸ç ´ååŽŸäºŒå‰æ ‘
 	if (root == NULL) {
 		root1 = NULL;
 		return;
 	}
-	root1 = new node;              //¹¹½¨Ò»¸öÐÂµÄ¶þ²æÊ÷Ê±£¬¼Ç×¡ÕâÀïÒªÉêÇë¿Õ¼ä
+	root1 = new node;              //æž„å»ºä¸€ä¸ªæ–°çš„äºŒå‰æ ‘æ—¶ï¼Œè®°ä½è¿™é‡Œè¦ç”³è¯·ç©ºé—´
 	root1->data = root->data;
 	reverse_1(root->lchild, root1->rchild);
 	reverse_1(root->rchild, root1->lchild);
 }
 
-bool isSame(node *lroot,node *rroot) {     //ÅÐ¶Ï¶þ²æÊ÷Á½×ÓÊ÷ÊÇ·ñÍ¬¹¹
+bool isSame(node *lroot,node *rroot) {     //åˆ¤æ–­äºŒå‰æ ‘ä¸¤å­æ ‘æ˜¯å¦åŒæž„
 	if (lroot == NULL&&rroot == NULL) {
 		return true;
 	}
 	if (lroot == NULL||rroot == NULL) {
 		return false;
 	}
-	return (isSame(lroot->lchild, rroot->lchild)&isSame(lroot->rchild, rroot->rchild));  //ÎÔ²Û¡£¡£
+	return (isSame(lroot->lchild, rroot->lchild)&isSame(lroot->rchild, rroot->rchild));  //å§æ§½ã€‚ã€‚
 }
 bool isSame_1(node *root) {
-	if (root == NULL)return true;          //Õâ¾ä²»ÄÜÉÙ
+	if (root == NULL)return true;          //è¿™å¥ä¸èƒ½å°‘
 	return isSame(root->lchild, root->rchild);
 }
 
-bool isComplete(node *root, int depth, int maxdepth) {    //ÅÐ¶Ï¶þ²æÊ÷ÊÇ·ñÎªÍêÈ«¶þ²æÊ÷
+bool isComplete(node *root, int depth, int maxdepth) {    //åˆ¤æ–­äºŒå‰æ ‘æ˜¯å¦ä¸ºå®Œå…¨äºŒå‰æ ‘
 	if (root == NULL) {
 		if (depth == maxdepth) {
 			return true;
@@ -194,7 +194,7 @@ bool isComplete(node *root, int depth, int maxdepth) {    //ÅÐ¶Ï¶þ²æÊ÷ÊÇ·ñÎªÍêÈ«
 	}
 	return (isComplete(root->lchild, depth + 1, maxdepth)&isComplete(root->rchild, depth + 1, maxdepth));
 }
-int calDepth(node *root, int &depth) {   //ÓÃÒýÓÃ£¬ÊµÏÖÁËÀàËÆÈ«¾Ö±äÁ¿µÄÐ§¹û
+int calDepth(node *root, int &depth) {   //ç”¨å¼•ç”¨ï¼Œå®žçŽ°äº†ç±»ä¼¼å…¨å±€å˜é‡çš„æ•ˆæžœ
 	if (root == NULL) return depth;
 	depth++;
 	calDepth(root->lchild, depth);
