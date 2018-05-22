@@ -1,0 +1,13 @@
+project工程-package包-.java文件-class类
+
+一个package里可以包含若干.java文件，如果是有名字的package则在该package下的.java文件前先说明package XXX，如果是没有名字的不用说明。
+
+.java文件里定义class的关系：
+一个.java文件中可以有很多class类。不过注意以下几点：
+1.public 权限的类只能有一个（也可以一个都没有，但最多只有1个）
+2.这个.java文件的文件名必须是public类的类名（一般的情况下，这里放置main方法是程序的入口。）
+3.若这个文件中没有public的类，则文件名随便是一个类的名字即可
+4.你用Javac 编译这个.java文件的时候，它会给每一个类生成一个.class文件
+
+package只对class起到了分类标签作用，比如有个叫shu的class在叫test的package下，则写成test.shu
+每个.java都可以编译和执行，只要里面有主函数。
